@@ -1,0 +1,12 @@
+  <table class="table table-striped" id="personal-skills">
+    <caption style="text-align:center">Мои навыки</caption>
+    <tbody>
+    <!--skills_ - это массив id-шек скиллов, а не оюъект-->
+    <% skills_.each do |item| %>
+        <tr id=<%= item %>>
+          <td width='80%'><%= Skill.find(item).name %></td>
+          <td width='20%'><%= link_to 'Удалить', remove_candidates_path(item), method: :post, remote: true, class: 'btn btn-danger btn-xs' %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>

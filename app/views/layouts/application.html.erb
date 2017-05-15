@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Ka" %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+
+  </head>
+  <body>
+
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-responsive-collapse'>
+          <span class='icon-bar'></span>
+          <span class='icon-bar'></span>
+          <span class='icon-bar'></span>
+        </button>
+        <a class="navbar-brand" href=<%= root_path %>>Ka</a>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <ul class="nav navbar-nav">
+            <% if user_signed_in? %>
+                <% if current_user.ka_staff %>
+                  <li><%= link_to "Справочник <Навыки>", new_skill_path  %></li>
+                  <li><%= link_to "Управление вакансиями", new_vacancy_path  %></li>
+                  <li><%= link_to "Кандидаты", candidates_path  %></li>
+                <% else %>
+                  <li><%= link_to "Рабочий профиль", edit_candidate_path(current_user.id)  %></li>
+                  <li><%= link_to "Поиск вакансий", search_candidates_path  %></li>
+                <% end %>
+            <% end %>
+          </ul>
+
+          <ul class="nav navbar-right col-md-4">
+            <% if user_signed_in? %>
+                <li class='col-md-8 user-name text-right'>
+                  <%= link_to current_user.email, '#"' %>
+                </li>
+                <li class="col-md-4" logout><%= link_to('Logout', destroy_user_session_path,
+                                                        class: 'btn btn-xs btn-danger', method: :delete) %>
+                </li>
+            <% else %>
+                <li class='col-md-8'></li>
+                <li class="col-md-4"><%= link_to('Sign-in', user_session_path, class: 'btn btn-xs btn-primary') %>
+            <% end %>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <%= bootstrap_flash %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

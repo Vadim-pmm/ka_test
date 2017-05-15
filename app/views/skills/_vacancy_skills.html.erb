@@ -1,0 +1,13 @@
+<table class="table table-striped" id="vacancy-skills">
+  <caption style="text-align:center">Навыки для вакансии</caption>
+  <tbody>
+    <% if skills_ %>
+      <% skills_.each do |item| %>
+          <tr id=<%= item %>>
+            <td width='80%'><%= Skill.find(item).name %></td>
+            <td width='20%'><%= link_to 'Удалить', remove_vacancies_path(item), method: :post, remote: true, class: 'btn btn-danger btn-xs' %></td>
+          </tr>
+      <% end %>
+     <% end %>
+  </tbody>
+</table>

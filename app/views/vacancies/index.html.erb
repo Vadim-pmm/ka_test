@@ -1,0 +1,14 @@
+<div class='col-md-8'>
+  <table class="table table-striped">
+    <caption style="text-align:center">Реестр вакансий</caption>
+    <tbody>
+        <% @vacancies.each do |vac| %>
+        <tr>
+          <td width='90%'><%= vac.name %></td>
+          <td width='10%'><%= link_to 'Посмотреть', vacancy_path(vac.id), disabled: !user_signed_in?, class: 'btn btn-primary btn-xs' %></td>
+         </tr>
+        <% end %>
+    </tbody>
+  </table>
+
+</div>

@@ -1,0 +1,36 @@
+<div class="col-md-6">
+<%= form_for @vacancy, :html => {:class => "form-group"} do |f| %>
+    <%= f.label :name, 'Наименование' %>
+    <%= f.text_field :name, class: 'form-control', readonly: true %>
+    <br />
+
+    <div class="form-inline">
+      <%= f.label :expires_at, 'Срок размещения' %>
+      <%= f.date_field :expires_at, required: true, class: 'form-control' %>
+
+      <div class="input-group">
+        <span class="input-group-addon">Уровень зп :</span>
+        <%= f.number_field :salary, class: 'form-control', required: true, min: 1000 %>
+        <span class="input-group-addon">руб.</span>
+      </div>
+    </div>
+    <br /><br />
+
+    <%= f.label :contact_info, 'Контактная информация' %>
+    <%= f.text_field :contact_info, class: 'form-control', required: true %>
+
+    <%= f.submit 'Обновить вакансию', class: "btn btn-success btn-sm", style: "margin-top: 20px;" %>
+<% end %>
+</div>
+
+
+<div class="col-md-6">
+
+  <%= form_tag append_skill_vacancies_path, remote: true, :html => {:class => 'form-group'} do %>
+      <%= text_field_tag :newskill, '', data: {autocomplete_source: Skill.pluck(:name)}, required: true, class: 'form-control' %>
+
+      <%= button_tag 'Добавить', class: 'btn btn-success btn-sm', style: 'margin-top: 20px;' %>
+  <% end %>
+
+  <%= render partial: 'skills/vacancy_skills', locals: {skills_: @vacancy.skills} %>
+</div>

@@ -1,0 +1,23 @@
+<div class='col-md-8'>
+  <%= form_tag vacancies_path, method: :post, html: {:class => 'form-group form-inline'} do %>
+
+      <%= submit_tag 'Создать', class: 'btn btn-primary btn-sm' %>
+      <%= text_field_tag :name, nil, placeholder: 'Название вакансии', class: 'form-control', required: true, size: 40 %>
+  <% end %>
+  <br />
+
+  <table class="table table-striped">
+    <caption style="text-align:center">Реестр вакансий</caption>
+    <tbody>
+    <% @vacancies.each do |vac| %>
+        <tr>
+          <td width='70%'><%= vac.name %></td>
+          <td width='10%'><%= link_to 'Посмотреть', edit_vacancy_path(vac.id), class: 'btn btn-primary btn-xs' %></td>
+          <td width='10%'><%= link_to 'Кандидаты', search_vacancies_path(vac.id), class: 'btn btn-primary btn-xs' %></td>
+          <td width='10%'><%= link_to 'Удалить', vacancy_path(vac.id), method: :delete, class: 'btn btn-danger btn-xs' %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+</div>

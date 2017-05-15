@@ -1,0 +1,12 @@
+<table class="table table-striped">
+  <caption style="text-align:center">Кандидаты, ищущие работу :</caption>
+  <tbody>
+  <% @candidates.each do |item| %>
+      <tr>
+        <td width='80%'><%= item.name %></td>
+        <td width='20%'><%= link_to 'Просмотреть', candidate_path(item.id), class: 'btn btn-primary btn-xs' %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+

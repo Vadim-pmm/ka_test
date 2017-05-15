@@ -1,0 +1,32 @@
+<div class="col-md-6">
+  <%= label_tag :name, 'Наименование' %>
+  <%= text_field_tag :name, @vacancy.name, class: 'form-control', readonly: true %>
+  <br />
+
+  <%= label_tag :expires_at, 'Срок размещения' %>
+  <%= date_field_tag :expires_at, @vacancy.expires_at, readonly: true, class: 'form-control' %>
+  <br />
+
+  <%= label_tag :salary, 'Заработная плата' %>
+  <%= text_field_tag :salary, number_to_currency(@vacancy.salary, locale: :ru), class: 'form-control', readonly: true %>
+  <br /><br />
+
+  <%= label_tag :contact_info, 'Контактная информация' %>
+  <%= text_field_tag :contact_info, @vacancy.contact_info, class: 'form-control', readonly: true %>
+</div>
+
+<div class="col-md-6">
+  <table class="table table-striped">
+    <caption style="text-align:center">Навыки для вакансии</caption>
+    <tbody>
+    <% if @vacancy.skills %>
+        <% @vacancy.skills.each do |item| %>
+            <tr>
+              <td><%= Skill.find(item).name %></td>
+            </tr>
+        <% end %>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+

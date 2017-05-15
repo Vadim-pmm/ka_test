@@ -1,0 +1,21 @@
+<div class="col-md-8">
+
+  <%= form_tag search_candidates_path, method: 'get', remote: true, class: 'form-group' do %>
+
+      <%= text_field_tag :search_str, nil, class: 'form-control' %>
+
+      <%= radio_button_tag :dest, 'all', true, class: 'btn btn-primary shifted' %>
+      <%= label_tag(:dest_all, 'Все', class: 'checkbox_inline') %>
+
+      <%= radio_button_tag :dest, 'exact', false, class: 'btn btn-primary shifted' %>
+      <%= label_tag(:dest_exact, 'Точное соответствие', class: 'checkbox_inline') %>
+
+      <%= radio_button_tag :dest, 'not_exact', false, class: 'btn btn-primary shifted' %>
+      <%= label_tag(:dest_not_exact, 'Похожие', class: 'checkbox_inline') %>
+
+      <br />
+      <%= submit_tag 'Иcкать', class: 'btn btn-success btn-sm', style: 'margin-top: 20px;' %>
+  <% end %>
+</div>
+
+<div id='search-result-container'></div>

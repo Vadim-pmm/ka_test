@@ -1,0 +1,8 @@
+<% if @skill_added %>
+  html1 = "<tr id=<%= @skill_added.id %>><td width='80%'><%= @skill_added.name %></td><td width='20%'>"
+  html2 ="<a href='/vacancies/remove_skill/<%= @skill_added.id %>' class='btn btn-danger btn-xs' data-remote='true' rel='nofollow' data-method='post'>"
+  html3 = 'Удалить</a></td></tr>'
+
+  $('#vacancy-skills').prepend(html1 + html2 + html3)
+  $('#newskill').val('')
+<% end %>

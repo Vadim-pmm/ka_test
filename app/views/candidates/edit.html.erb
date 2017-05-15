@@ -1,0 +1,44 @@
+<div class="col-md-6">
+  <h3>Основные данные</h3>
+  <div class='form-inline'>
+    <p class="well well-sm"><%= @candidate.name %></p>
+    <p class="well well-sm"><%= @candidate.father_name %></p>
+    <p class="well well-sm"><%= @candidate.surname %></p>
+  </div>
+
+  <h3>Данные профиля</h3>
+  <%= form_for @profile, url: {action: 'update'}, :html => {:class => 'form-group'} do |prof| %>
+      <%= prof.label :address, 'Адрес :' %>
+      <%= prof.text_field :address, class: 'form-control' %>
+      <br />
+
+      <%= prof.label :phone, 'Телефон :' %>
+      <div class="input-group">
+        <span class="input-group-addon">+7 :</span>
+        <%= prof.text_field :phone, value: number_to_phone(@profile.phone, area_code: true), class: 'form-control' %>
+      </div>
+      <br />
+
+      <div class="input-group">
+          <span class="input-group-addon">Уровень зп :</span>
+          <%= prof.number_field :salary, class: 'form-control' %>
+          <span class="input-group-addon">руб.</span>
+      </div>
+      <br />
+
+      <%= prof.label :act, 'Ищу работу', class: 'label label-default' %>
+      <%= prof.check_box :act, checked: @profile.act, class: 'checkbox-inline' %>
+      <br />
+
+      <%= prof.submit 'Изменить профиль', class: 'btn btn-success btn-sm', style: 'margin-top: 20px;' %>
+  <% end %>
+</div>
+
+<div class="col-md-6">
+  <%= form_tag append_skill_candidates_path, remote: true, :html => {:class => 'form-group'} do %>
+    <%= text_field_tag :newskill, '', data: {autocomplete_source: Skill.pluck(:name)}, required: true, class: 'form-control' %>
+
+    <%= button_tag 'Добавить', class: 'btn btn-success btn-sm', style: 'margin-top: 20px;' %>
+<% end %>
+  <%= render partial: 'skills/personal_skills', locals: {skills_: @profile.skills} %>
+</div>

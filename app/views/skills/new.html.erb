@@ -1,0 +1,7 @@
+<%= form_for @skill, :html => {:class => 'form-group'} do |f| %>
+    <%= f.text_field :name, class: 'form-control' %>
+    <%= f.submit 'Создать', class: 'btn btn-success btn-sm', style: 'margin-top: 20px;' %>
+
+<% end %>
+
+<%= render 'all_skills' %>

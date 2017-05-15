@@ -1,0 +1,12 @@
+<table class="table table-striped">
+  <caption style="text-align:center">Найденые вакансии</caption>
+  <tbody>
+  <% @search_result.each do |item| %>
+      <tr>
+        <td width='70%'><%= item.name %></td>
+        <td width='20%' style='text-align: right;'><%= number_to_currency(item.salary, locale: :ru) %></td>
+        <td width='10%'><%= link_to 'Просмотреть', '#', class: 'btn btn-primary btn-xs' %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

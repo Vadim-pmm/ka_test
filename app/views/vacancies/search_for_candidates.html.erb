@@ -1,0 +1,23 @@
+<table class="table table-striped">
+  <caption style="text-align:center">Точное совпадение навыков</caption>
+  <tbody>
+  <% @search_result_exact.each do |item| %>
+      <tr>
+        <td width='80%'><%= item.name %></td>
+        <td width='20%'><%= link_to 'Просмотреть', candidate_path(item.id), class: 'btn btn-primary btn-xs' %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<table class="table table-striped">
+  <caption style="text-align:center">Частичное совпадение навыков</caption>
+  <tbody>
+  <% @search_result_not_exact.each do |item| %>
+      <tr>
+        <td width='80%'><%= item.name %></td>
+        <td width='20%'><%= link_to 'Просмотреть', candidate_path(item.id), class: 'btn btn-primary btn-xs' %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
