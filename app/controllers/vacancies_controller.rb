@@ -1,5 +1,5 @@
 class VacanciesController < ApplicationController
-  #before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, except: :index
   before_action :get_vacancy, only: [:show, :edit, :update, :search_for_candidates]
 
   def index

@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170511095244) do
     t.integer  "salary",                default: 0
     t.boolean  "act",                   default: true
     t.integer  "skills",                default: [],                array: true
+    t.string   "avatar"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.index ["user_id"], name: "index_profiles_on_user_id", unique: true, using: :btree

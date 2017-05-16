@@ -7,7 +7,12 @@
   </div>
 
   <h3>Данные профиля</h3>
-  <div class='form-inline'>
+  <div class="form-group img-placeholder">
+    <% if @profile.avatar.url %>
+        <%= image_tag @profile.avatar.url, size: '100', class: 'rounded mx-auto d-block', id: "img_prev" %>
+    <% end %>
+    <br/>
+
       <%= label_tag :address, 'Адрес', class: 'label label-default' %>
       <%= text_field_tag :address, @profile.address, class: 'form-control', size: 37, readonly: true %>
   </div>

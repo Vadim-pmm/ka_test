@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates_with CustomUserValidator
   after_validation :split_name
 
-  scope :all_active, -> { where(id: Profile.where(act: true)) }
+  scope :all_active, -> { where(id: Profile.where(act: true).pluck(:user_id)) }
 
   has_one :profile
 

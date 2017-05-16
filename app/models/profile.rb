@@ -3,4 +3,6 @@ class Profile < ApplicationRecord
   scope :only_active, -> { where(act: true) }
 
   belongs_to :user
+
+  mount_uploader :avatar, AvatarUploader
 end

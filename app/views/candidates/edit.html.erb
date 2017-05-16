@@ -8,6 +8,19 @@
 
   <h3>Данные профиля</h3>
   <%= form_for @profile, url: {action: 'update'}, :html => {:class => 'form-group'} do |prof| %>
+
+      <div class="form-group img-placeholder">
+        <% if @profile.avatar.url %>
+            <%= image_tag @profile.avatar.url, size: '100', class: 'rounded mx-auto d-block', id: "img_prev" %>
+        <% else %>
+            <img id="img_prev" size=100 src="#" class="img-thumbnail hidden">
+        <% end %>
+        <br/>
+
+      <%= prof.file_field :avatar, id: "avatar-upload", accept: 'image/jpeg,image/gif,image/png' %>
+      <%= prof.hidden_field :avatar_cache %>
+      </div>
+
       <%= prof.label :address, 'Адрес :' %>
       <%= prof.text_field :address, class: 'form-control' %>
       <br />

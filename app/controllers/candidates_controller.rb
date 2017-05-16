@@ -16,11 +16,7 @@ class CandidatesController < ApplicationController
   end
 
   def update
-    params_permitted
-    if current_user.profile.update(address: params[:profile][:address],
-                                   salary: params[:profile][:salary],
-                                   phone: params[:profile][:phone],
-                                   act: looking_for_job?)
+    if current_user.profile.update(params_permitted.merge(act: looking_for_job?))
       flash[:notice] = 'Профиль успешно обновлен'
       redirect_to root_path
     else
@@ -80,7 +76,7 @@ class CandidatesController < ApplicationController
   private
 
   def params_permitted
-    params.require(:profile).permit(:address, :salary, :act, :phone)
+    params.require(:profile).permit(:address, :salary, :act, :phone, :avatar)
   end
 
   def looking_for_job?

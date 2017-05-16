@@ -7,6 +7,7 @@ class CreateProfiles < ActiveRecord::Migration[5.0]
       t.integer  :salary, default: 0
       t.boolean  :act, default: true
       t.integer  :skills, array: true, default: []
+      t.string   :avatar
 
       t.timestamps
     end
