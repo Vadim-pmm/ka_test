@@ -1,3 +1,4 @@
+<div class="row">
 <div class="col-md-6">
   <%= label_tag :name, 'Наименование' %>
   <%= text_field_tag :name, @vacancy.name, class: 'form-control', readonly: true %>
@@ -29,4 +30,10 @@
     </tbody>
   </table>
 </div>
+</div>
 
+<div class="row">
+  <div class="col-md-6">
+    <%= react_component('CommentSection', vacancyId: @vacancy.id, comments: raw(render(template: 'comments/index.json.jbuilder'))) %>
+  </div>
+</div>

@@ -10,7 +10,8 @@ class User < ApplicationRecord
 
   scope :all_active, -> { where(id: Profile.where(act: true).pluck(:user_id)) }
 
-  has_one :profile
+  has_one  :profile
+  has_many :comments
 
   def get_skills_by_name(skills_id)
     Skill.where(id: skills_id).pluck(:name)

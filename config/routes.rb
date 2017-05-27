@@ -9,6 +9,9 @@ Rails.application.routes.draw do
       post 'remove_skill/:id', to: 'vacancies#remove_skill', as: 'remove'
       get  'search/:id', to: 'vacancies#search_for_candidates', as: 'search'
     end
+    resources :comments do
+      put 'upvote', to: 'comments#upvote'
+    end
   end
 
   resources :skills, only: [:new, :create, :destroy] do

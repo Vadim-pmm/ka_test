@@ -22,7 +22,7 @@ class SkillsController < ApplicationController
   end
 
   def destroy
-    if skill_in_use?(params[:id])
+    if CheckSkills.skill_in_use?(params[:id])
       flash[:danger] = 'Данный навык используется в вакансии или в резюме'
     else
       Skill.delete(params[:id])
@@ -37,9 +37,4 @@ class SkillsController < ApplicationController
     params.require(:skill).permit(:name)
   end
 
-  def skill_in_use?(id_)
-    a = Vacancy.where("? = ANY(skills)", id_).count
-    b = Profile.where("? = ANY(skills)", id_).count
-    (a + b) != 0
-  end
 end

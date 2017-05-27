@@ -6,7 +6,9 @@ class VacanciesController < ApplicationController
     @vacancies = Vacancy.not_expired
   end
 
-  def show; end
+  def show
+    @comments = @vacancy.comments
+  end
 
   def new
     @vacancies = Vacancy.all.order(id: :desc)

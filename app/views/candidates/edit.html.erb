@@ -11,14 +11,13 @@
 
       <div class="form-group img-placeholder">
         <% if @profile.avatar.url %>
-            <%= image_tag @profile.avatar.url, size: '100', class: 'rounded mx-auto d-block', id: "img_prev" %>
+            <%= image_tag @profile.avatar.url, size: '100', class: 'rounded mx-auto d-block', id: 'img_prev' %>
         <% else %>
-            <img id="img_prev" size=100 src="#" class="img-thumbnail hidden">
+            <img id="img_prev" size=100 src='#' class="img-thumbnail hidden">
         <% end %>
         <br/>
 
-      <%= prof.file_field :avatar, id: "avatar-upload", accept: 'image/jpeg,image/gif,image/png' %>
-      <%= prof.hidden_field :avatar_cache %>
+        <%= prof.file_field :avatar, id: "avatar-upload", accept: 'image/jpeg,image/gif,image/png' %>
       </div>
 
       <%= prof.label :address, 'Адрес :' %>

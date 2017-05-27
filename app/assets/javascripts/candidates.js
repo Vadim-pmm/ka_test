@@ -15,10 +15,12 @@ $(function() {
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-
             reader.onload = function (e) {
+                // src может быть не только ссылкой на img, но и собственно контентом в формате URI
                 $('#img_prev').attr('src', e.target.result);
-            }
+            };
+            // readAsDataURL - грузит файл в формате data URI
+            // это происходит в формате HTTP-запроса (т.е. нужно настроить обработчик onload)
             reader.readAsDataURL(input.files[0]);
         }
     }

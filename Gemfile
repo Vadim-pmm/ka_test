@@ -5,20 +5,13 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+ruby '2.4.0'
 gem 'rails', '~> 5.0.2'
-# Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
-# Use Puma as the app server
 gem 'puma', '~> 3.0'
-# Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-# gem 'coffee-rails', '~> 4.2'
-# See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
@@ -31,21 +24,26 @@ gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'twitter-bootstrap-rails'
 
+gem 'react-rails'
+gem 'flux-rails-assets'
+gem 'lodash-rails'
+gem 'sprockets-es6'
+
+#gem 'sprockets', '~> 4.x'
+#gem 'babel-schmooze-sprockets'
+
 group :development, :test do
-  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
 
   gem 'rspec-rails'
   gem 'factory_girl_rails'
 end
+gem 'web-console', group: :development
 
 group :test do
   gem 'faker'
-  gem 'capybara'
   gem 'database_cleaner'
   gem 'launchy'
-  gem 'selenium-webdriver'
   gem 'rails-controller-testing'
 end
 
