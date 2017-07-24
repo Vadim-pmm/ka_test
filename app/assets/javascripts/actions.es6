@@ -39,10 +39,6 @@ class Actions {
     watch() {
         Api.get(`/vacancies/${this.vacancyId}/comments`).then(comments => {
             this.setComments(comments);
-            // console.log( '------------------------');
-            // console.log(comments);
-            // console.log(`${this.vacancyId}`);
-            // debugger
         });
     }
 }

@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
 
   def index
     @comments = Comment.where(vacancy_id: params[:vacancy_id])
+    a=11
   end
 
   def create

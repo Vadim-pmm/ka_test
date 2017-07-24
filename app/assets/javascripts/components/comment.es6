@@ -49,7 +49,7 @@ class Comment extends React.Component {
             </blockquote>
             <button className='btn btn-small btn-primary' onClick={this.onToggleReply.bind(this)}>{replyText}</button>
             <button className='btn btn-small' onClick={this.onUpvote.bind(this)}>+1</button>
-            {/*почему-то трубует передачи именно как хэша "параметр-значение*/}
+            {/*почему-то требует передачи именно как хэша "параметр-значение*/}
             <CommentForm
                 id={this.props.id}
                 isReplying={this.state.isReplying}
