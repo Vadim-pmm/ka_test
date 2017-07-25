@@ -13,8 +13,8 @@ class User < ApplicationRecord
   has_one  :profile
   has_many :comments
 
-  def get_skills_by_name(skills_id)
-    Skill.where(id: skills_id).pluck(:name)
+  def has_profile?
+    profile.nil? ? false : true
   end
 
   private

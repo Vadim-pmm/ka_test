@@ -8,6 +8,7 @@ class VacanciesController < ApplicationController
 
   def show
     @comments = @vacancy.comments
+    a=11
   end
 
   def new
@@ -40,7 +41,7 @@ class VacanciesController < ApplicationController
 
     @vacancy = Vacancy.find(session[:vac_id])
     skills_ = @vacancy.skills
-    skills_names = @vacancy.get_skills_by_name(skills_)
+    skills_names = Skill.get_skills_names(skills_)
 
     if skills_names.include? @skill_added.name
       @skill_added = nil

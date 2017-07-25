@@ -29,13 +29,13 @@ class CandidatesController < ApplicationController
   def append_skill
     @skill_added = Skill.find_or_create_by(name: params[:newskill].strip)
 
-    skills_      = current_user.profile.skills
-    skills_names = current_user.get_skills_by_name(skills_)
+    skills       = current_user.profile.skills
+    skills_names = Skill.get_skills_names(skills)
 
     if skills_names.include?(@skill_added.name)
       @skill_added = nil
     else
-      current_user.profile.update(skills: (skills_ << @skill_added.id).uniq.sort)
+      current_user.profile.update(skills: (skills << @skill_added.id).uniq.sort)
     end
 
     respond_to do |format|
@@ -52,25 +52,18 @@ class CandidatesController < ApplicationController
   end
 
   def search_for_vacancies
-    search_criteria = current_user.profile.skills.sort
+    if current_user.has_profile?
+      @search_result = Vacancy.get_vacancies(params[:dest], current_user.profile.skills.sort)
 
-    case params[:dest]
-      when 'exact'
-        @search_result = Vacancy.not_expired.reject { |item| item.skills != search_criteria }
-      when 'not_exact'
-        get_data = Vacancy.not_expired
-        @search_result = []
-        get_data.each do |item|
-          @search_result << item if ((item.skills & search_criteria).length != 0)
-        end
-      else
-        @search_result = Vacancy.not_expired.map
+      respond_to do |format|
+        format.html        # initial rendering when candidate goes to search page
+        format.js          # updates page with the search results (after pushing Search button)
+      end
+    else
+      flash[:danger] = 'Заполните профиль'
+      redirect_to root_path
     end
 
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   private

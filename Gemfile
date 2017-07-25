@@ -29,9 +29,6 @@ gem 'flux-rails-assets'
 gem 'lodash-rails'
 gem 'sprockets-es6'
 
-#gem 'sprockets', '~> 4.x'
-#gem 'babel-schmooze-sprockets'
-
 group :development, :test do
   gem 'listen', '~> 3.0.5'
 

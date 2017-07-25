@@ -1,24 +1,11 @@
-# README
+# Recruitment agency
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application allows you to log in and :
+1. as a recruiter - create vacancies and look for matching candidates.
+2. as a job seeker - create your profile, search for vacancies, apply to published vacancies, comment on vacancy, ...
 
-Things you may want to cover:
+It used to be one of my test tasks (as an applicant). Once done it was refactored added React components and Flux.
+Just for training purposes.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Ruby '2.4.0'
+Rails '~> 5.0.2'
