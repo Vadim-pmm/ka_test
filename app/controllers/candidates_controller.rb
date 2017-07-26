@@ -52,6 +52,7 @@ class CandidatesController < ApplicationController
   end
 
   def search_for_vacancies
+
     if current_user.has_profile?
       @search_result = Vacancy.get_vacancies(params[:dest], current_user.profile.skills.sort)
 
